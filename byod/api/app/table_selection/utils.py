@@ -48,8 +48,11 @@ def load_tables_and_types_metadata():
 
 
 def save_tables_metadata_to_json():
-    with open("app/models/json/table_metadata.json", "w") as f:
-        json.dump(TABLES_METADATA_DICT, f, indent=4)
+    try:
+        with open("app/models/json/table_metadata.json", "w") as f:
+            json.dump(TABLES_METADATA_DICT, f, indent=4)
+    except Exception as e:
+        print(e)
 
 
 def save_enums_metadata_to_json():
@@ -173,6 +176,7 @@ def get_relevant_tables_from_lm(natural_language_query):
     """
     Identify relevant tables for answering a natural language query via LM
     """
+    print(natural_language_query)
     content = _get_table_selection_message_with_descriptions(natural_language_query)
     messages = _get_table_selection_messages().copy()
     messages.append({

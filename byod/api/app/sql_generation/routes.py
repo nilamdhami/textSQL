@@ -7,6 +7,7 @@ from .utils import text_to_sql_with_retry
 
 bp = Blueprint('sql_generation_bp', __name__)
 
+import openai
 
 @bp.route('/text_to_sql', methods=['POST'])
 def text_to_sql():
@@ -16,6 +17,13 @@ def text_to_sql():
     request_body = request.get_json()
     natural_language_query = request_body.get("natural_language_query")
     table_names = request_body.get("table_names")
+
+    # print(table_names)
+
+    # code to know all the models available for your API key
+    # openai.api_key = "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"
+    # models = openai.Model.list()
+    # print(models['data'])
 
     if not natural_language_query:
         error_msg = "`natural_language_query` is missing from request body"

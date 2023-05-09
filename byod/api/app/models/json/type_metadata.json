@@ -1,4 +1,14 @@
 {
+    "mpaa_rating": {
+        "type": "mpaa_rating",
+        "valid_values": [
+            "G",
+            "PG",
+            "PG-13",
+            "R",
+            "NC-17"
+        ]
+    },
     "sex": {
         "type": "sex",
         "valid_values": [
